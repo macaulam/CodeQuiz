@@ -1,48 +1,83 @@
 <!DOCTYPE html>
-<html lang="en-gb">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-  </head>
+<!-- body -->
 
-  <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+<body>
+    <!-- header -->
+    <header>
+        <h1>Code Quiz</h1>
+        <p>Test your knowledge of Javascript fundamentals!</p>
+        <div class="flex">
+            <h4 id="view-high-scores">View high scores</h4>
+            <h4> Time remaining: <span id="countdown">60</span></h4>
+        </div>    
+    </header>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+    <!-- main -->
+    <main id="container">
 
-    <div class="wrapper">
-      <div id="start-screen" class="start">
-        <h1>Coding Quiz Challenge</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
-        </p>
-        <button id="start">Start Quiz</button>
-      </div>
+        <!-- start page -->
+        <section id="start-page">
+            <h2>How to get started:</h2>
+            <p>Try to answer all of the multiple choice questions before time runs out! Any incorrect answer will deduct
+                10 seconds from your remaining time. Click "Start Quiz" to begin.</p>
+            <button id="start">Start Quiz</button>
+        </section>
 
-      <div id="questions" class="hide">
-        <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
-      </div>
+        <section id="quiz" hidden>
+                <h3 id="question"></h3>
+                <ol id="choices" hidden>
+                    <li class="choice" id="A"></li>
+                    <li class="choice" id="B"></li>
+                    <li class="choice" id="C"></li>
+                    <li class="choice" id="D"></li>
+                </ol>
+                <button id="view-score-btn" hidden>View Final Score</button> 
+                <div id="result"></div>
+        </section>
 
-      <div id="end-screen" class="hide">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span>.</p>
-        <p>
-          Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
-        </p>
-      </div>
+        <!-- save score to leaderboard -->
+        <section id="quiz-complete" hidden>
+            <h2>Quiz complete</h2>
+            <h4>Your score: <span id="my-score"></span>%</h4>
+            <form action="save-my-score" method="save">
+                <label for="initials">
+                    Enter your initials:
+                </label>
+                <input type="text" id="initials" name="enter_initials" />
+            </form>
+            <button type = "submit" id="save-button">Save your score</button>
+        </section>
 
-      <div id="feedback" class="feedback hide"></div>
-    </div>
+
+        <!-- view high scores -->
+        <section id="scoreboard" hidden>
+            <h2 id="highScores">High Scores</h2>
+            <ol id="topFive">
+                <li class='userHighScore' id="1"></li>
+                <li class='userHighScore' id="2"></li>
+                <li class='userHighScore' id="3"></li>
+                <li class='userHighScore' id="4"></li>
+                <li class='userHighScore' id="5"></li>
+            </ol>
+            <button id="to-start-page">Return to start</button>
+        </section>
+
+    </main>
 
     <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/logic.js"></script>
-  </body>
+    <script src="./assets/js/script.js"></script>
+
+
+</body>
+
 </html>
